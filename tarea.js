@@ -39,6 +39,19 @@ function tres(cad){
     return res;
 }
 
+function uno(){
+  var matrix = [[0, 1, 1, 2],
+          [0, 5, 0, 0],
+          [2, 0, 3, 3]];
+  var sum=0;
+  for(var i=0;i<3;i++){
+    for(var j=0;j<4;j++){
+      sum+=matrix[i][j];
+    }
+  }
+  return sum;
+}
+
 function volteo(cad){
   var res='';
   for(var i=cad.length-1;i>=0;i--){
@@ -49,4 +62,5 @@ function volteo(cad){
 }
 
 //console.log(cinco(5,1));
-console.log(tres("foo(bar)baz"));
+//console.log(tres("foo(bar)baz"));
+console.log(uno());
