@@ -13,36 +13,54 @@ function cinco(p,n){
     }
     return p;
 }
-
+/////////////------------------aqui empieza el tres
+var con=0;
 function tres(cad){
-    var res='';
-    var res2='';
-    var i=0;
-    while(i<cad.length){
-        let c=cad.charAt(i);
-        if(c=='('){
-          i++;
-          while(c!=')'){
-            c=cad.charAt(i);
-            if(c!=')'){
-              res2+=c;
-              i++;
-            }
-          }
-          res2=volteo(res2);
-          res+=res2;
-        }else{
-          res+=c;
-        }
-        i++;
+    let res='';
+    while(con<cad.length){
+      let c=cad.charAt(con);
+      if(c=='('){
+        con++;
+        res+=add(cad);
+      }else{
+        res+=c;
+      }
+      con++;
     }
     return res;
 }
+const add=(cad)=>{
+    //console.log("cadena recursiva "+cad);
+    let res='';
+    while(con<cad.length){
+      let c=cad.charAt(con);
+      if(c=='('){
+        con++;
+        res+=add(cad);
+      }else if(c==')'){
+        res=volteo(res);
+        return res;
+      }else{
+        res+=c;
+      }
+      con++;
+    }
+    return res;
 
+}
+function volteo(cad){
+  let sum='';
+  for(let i=cad.length-1;i>=0;i--){
+    let c=cad.charAt(i);
+    sum+=c;
+  }
+  return sum;
+}
+////////////////////////////////////---------aqui finaliza el tres
 function uno(){
   var matrix = [[0, 1, 1, 2],
-          [0, 5, 0, 0],
-          [2, 0, 3, 3]];
+                [0, 5, 0, 0],
+                [2, 0, 3, 3]];
   var sum=0;
   for(var i=0;i<3;i++){
     for(var j=0;j<4;j++){
@@ -51,16 +69,15 @@ function uno(){
   }
   return sum;
 }
+/*function probar(vec,i){
+    if(i<vec.length){
+      //console.log(i);
+      probar(vec,i+1);
+      console.log(vec[i]);
+    }
+}*/
 
-function volteo(cad){
-  var res='';
-  for(var i=cad.length-1;i>=0;i--){
-    let c=cad.charAt(i);
-    res+=c;
-  }
-  return res;
-}
-
-//console.log(cinco(5,1));
-//console.log(tres("foo(bar)baz"));
-console.log(uno());
+console.log("ejemplo del ejercicio cinco : "+cinco(1,2));
+console.log("ejemplo del ejercicio tres : "+tres("foo(bar(baz))blim"));
+console.log("ejemplo del ejercicio uno : "+uno());
+//probar([1,2,3,4],0);
