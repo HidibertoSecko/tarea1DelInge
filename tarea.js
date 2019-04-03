@@ -13,6 +13,7 @@ function cinco(p,n){
     }
     return p;
 }
+
 /////////////------------------aqui empieza el tres
 var con=0;
 function tres(cad){
